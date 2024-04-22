@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            display: flex;
+            gap: 1px;
+        }
+        #div1 {
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+
+        #div2 {
+            height: 100px;
+            width: 100px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+  <main>
+    <div id="div1" movable></div>
+    <div id="div2" movable></div>
+   </main>
+
+
+    <script>
+    const movable = document.querySelectorAll('movable');
+    let offsetX, offsetY;
+
+    movable.forEach(element => {
+        element.addEventListener('mousedown', mouseDownHandler);
+    })
+
+    function mouseDownHandler(event) {
+        // Calculate the offset between mouse cursor and the top-left corner of the element
+        offsetX = event.clientX - movable.getBoundingClientRect().left;
+        offsetY = event.clientY - movable.getBoundingClientRect().top;
+
+        // Start tracking mouse move
+        document.addEventListener('mousemove', mouseMoveHandler);
+        // Stop tracking when mouse is released
+        document.addEventListener('mouseup', mouseUpHandler);
+    }
+
+    function mouseMoveHandler(event) {
+        // Calculate new position of the element
+        const newX = event.clientX - offsetX;
+        const newY = event.clientY - offsetY;
+
+        // Set the new position
+        movable.style.left = newX + 'px';
+        movable.style.top = newY + 'px';
+    }
+
+    function mouseUpHandler() {
+        // Stop tracking mouse move
+        document.removeEventListener('mousemove', mouseMoveHandler);
+        document.removeEventListener('mouseup', mouseUpHandler);
+    }
+
+
+
+        /*--------------------------------------------*/ 
+        const div1 = document.getElementById("div1")
+        const div2 = document.getElementById("div2")
+
+        const rect1 = div1.getBoundingClientRect()
+        const rect2 = div2.getBoundingClientRect()
+
+        //div1.style.transform = "translateY(10px)"
+
+        function boxColliston(object1, object2) {
+            if (object1.x + object1.width >= object2.x &&
+                object1.x <= object2.x + object2.width &&
+                object1.y + object1.height >= object2.y &&
+                object1.y <= object2.y + object2.height) {
+                return true
+            }
+            return false 
+        }
+
+        console.log(boxColliston(rect1, rect2))
+    </script>
+</body>
+</html>

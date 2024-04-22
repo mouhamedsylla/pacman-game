@@ -1,0 +1,150 @@
+body {
+    background: #222;
+    font-family: "Comfortaa", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 150px;
+}
+
+.pacman_box {
+  height: 60px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 10px;
+  font-size: 40px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  color: #fff ;
+  letter-spacing: 8px; 
+  box-shadow: inset 0 0px 4px #434dc7, 0 0 0 2px #434dc7, 0 0 0 5px #222, 0 0 0 7px #434dc7, 0 0px 10px #434dc7, 0 0px 40px blue, 0 0px 80px #1424f7;
+  text-shadow: 0 0 8px #fff, 0 0 20px #fff, 0 0 40px #200d8a, 0 0 60px #200d8a, 0 0 0px #200d8a, 0 0 44px #200d8a, 0 0 95px #200d8a;
+  animation: neon-text 5s infinite;
+  /* #200d8a */
+}
+
+
+
+main {
+    display:  grid;
+    grid: repeat(29, 20px)/repeat(29, 1fr);
+    width: 580px;
+    margin: 5em auto;
+    position: relative;
+    box-shadow: 0 0 0 2px #434dc7, 0 0 0 5px #222, 0 0 0 7px #434dc7, 0 0px 10px #434dc7;
+}
+
+
+.dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot span {
+    width: 3px;
+    height: 3px;
+    background: #fff;
+}
+
+
+/*********************/
+
+.pacman {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #F2D648;
+  position: relative;
+  margin-top: 1.5px;
+  text-align: center;
+
+}
+
+.pacman__eye {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  top: 1px;
+  right: 6px;
+  background: #333333;
+}
+
+.pacman__mouth {
+  background: #222;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  animation-name: eat;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes eat {
+  0% {
+    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  }
+  25% {
+    clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+  }
+  50% {
+    clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+  }
+  75% {
+    clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+  }
+  100% {
+    clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+  }
+}
+
+.pacman__food {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border-radius: 50%;
+  top: 40%;
+  left: 120px;
+}
+
+.anime-food {
+  animation-name: food;
+  animation-duration: 0.2s;
+}
+
+@keyframes food {
+  0% {
+    transform: translateX(0);
+      opacity: 1;
+  }
+  100% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+}
+
+
+.ghost {
+  width: 69px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+}
+
+.wall {
+    background: #1424f7;
+}
