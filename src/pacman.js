@@ -5,7 +5,7 @@ class Pacman {
     constructor(grid) {
         this.grid = grid
         this.position = { x: 1, y: 1 }
-        this.previous = {x : 0, y: 0}
+        this.previous = { x: 0, y: 0 }
         this.pacman = grid[this.position.x][this.position.y]
         this.direction = null
         this.prev = null
@@ -69,7 +69,7 @@ class Pacman {
 
         if (this.direction == 'ArrowRight' || this.direction == 'ArrowLeft') {
             this.position.x += DIRECTION[this.direction].move
-            this.pacman.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`
+            this.pacman.style.transform = `translate(${this.position.x}px, ${this.position.y - 1 }px)`
         }
 
         if (this.direction == 'ArrowDown' || this.direction == 'ArrowUp') {

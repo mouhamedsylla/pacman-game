@@ -10,17 +10,17 @@ const PACMAN = Pacman.newPlayer(GAME_BOARD.grid)
 document.addEventListener("keydown", ({ key }) => {
     PACMAN.direction = key
 
-    
+    PACMAN.move(GAME_BOARD.eat)
 })
 
 
-function Animate() {
-    PACMAN.move(GAME_BOARD.eat)
-    const id = requestAnimationFrame(Animate)
-    if (PACMAN.collisionDetect()) {
-        cancelAnimationFrame(id)
-        Animate()
-    }
-}
+// function Animate() {
+    
+//     const id = requestAnimationFrame(Animate)
+//     if (PACMAN.collisionDetect()) {
+//         cancelAnimationFrame(id)
+//         Animate()
+//     }
+// }
 
-Animate()
+// Animate()

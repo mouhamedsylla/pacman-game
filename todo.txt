@@ -1,0 +1,7 @@
+to implements: 
+- add ghost
+- ghosts movement
+- score
+- player life
+- restart game button
+- pause game button
