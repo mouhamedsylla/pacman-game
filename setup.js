@@ -2,22 +2,22 @@
 export const DIRECTION = {
     ArrowRight: {
         rotate: 0,
-        move: 1.5
+        move: 2
     },
 
     ArrowLeft: {
         rotate: 180,
-        move: -1.5
+        move: -2
     },
 
     ArrowDown: {
         rotate: 90,
-        move: 1.5
+        move: 2
     },
 
     ArrowUp: {
         rotate: 270,
-        move: -1.5
+        move: -2
     }
 }
 

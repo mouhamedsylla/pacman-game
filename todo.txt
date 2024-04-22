@@ -1,7 +1,8 @@
 to implements: 
-- add ghost
-- ghosts movement
-- score
-- player life
-- restart game button
-- pause game button
+- add ghost (abdel)
+- ghosts movement (abdel && aziz && mouhamed)
+- score (aziz)
+- player life (mouhamed)
+- restart game button (aziz)
+- pause game button (mouhamed)
+- start button (abdel)

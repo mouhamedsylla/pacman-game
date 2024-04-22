@@ -69,7 +69,7 @@ class Pacman {
 
         if (this.direction == 'ArrowRight' || this.direction == 'ArrowLeft') {
             this.position.x += DIRECTION[this.direction].move
-            this.pacman.style.transform = `translate(${this.position.x}px, ${this.position.y - 1 }px)`
+            this.pacman.style.transform = `translate(${this.position.x}px, ${this.position.y }px)`
         }
 
         if (this.direction == 'ArrowDown' || this.direction == 'ArrowUp') {

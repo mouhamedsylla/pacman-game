@@ -6,8 +6,10 @@ import { BOARD_MAP, DIRECTION } from './setup.js';
 const GAME_BOARD = Board.createBoard(BOARD_MAP)
 const PACMAN = Pacman.newPlayer(GAME_BOARD.grid)
 
+//const rect = PACMAN.pacman.getBoundingClientRect()
 
 document.addEventListener("keydown", ({ key }) => {
+    
     PACMAN.direction = key
 
     PACMAN.move(GAME_BOARD.eat)
