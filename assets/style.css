@@ -1,6 +1,6 @@
 body {
-    background: #222;
-    font-family: "Comfortaa", sans-serif;
+  background: #222;
+  font-family: "Comfortaa", sans-serif;
 }
 
 header {
@@ -21,38 +21,37 @@ header {
   font-size: 40px;
   border-radius: 3px;
   text-transform: uppercase;
-  color: #fff ;
-  letter-spacing: 8px; 
-  box-shadow: inset 0 0px 4px #434dc7, 0 0 0 2px #434dc7, 0 0 0 5px #222, 0 0 0 7px #434dc7, 0 0px 10px #434dc7, 0 0px 40px blue, 0 0px 80px #1424f7;
-  text-shadow: 0 0 8px #fff, 0 0 20px #fff, 0 0 40px #200d8a, 0 0 60px #200d8a, 0 0 0px #200d8a, 0 0 44px #200d8a, 0 0 95px #200d8a;
+  color: #fff;
+  letter-spacing: 8px;
+  box-shadow: inset 0 0px 4px #434dc7, 0 0 0 2px #434dc7, 0 0 0 5px #222,
+    0 0 0 7px #434dc7, 0 0px 10px #434dc7, 0 0px 40px blue, 0 0px 80px #1424f7;
+  text-shadow: 0 0 8px #fff, 0 0 20px #fff, 0 0 40px #200d8a, 0 0 60px #200d8a,
+    0 0 0px #200d8a, 0 0 44px #200d8a, 0 0 95px #200d8a;
   animation: neon-text 5s infinite;
   /* #200d8a */
 }
 
-
-
 main {
-    display:  grid;
-    grid: repeat(29, 20px)/repeat(29, 1fr);
-    width: 580px;
-    margin: 5em auto;
-    position: relative;
-    box-shadow: 0 0 0 2px #434dc7, 0 0 0 5px #222, 0 0 0 7px #434dc7, 0 0px 10px #434dc7;
+  display: grid;
+  grid: repeat(29, 20px) / repeat(29, 1fr);
+  width: 580px;
+  margin: 5em auto;
+  position: relative;
+  box-shadow: 0 0 0 2px #434dc7, 0 0 0 5px #222, 0 0 0 7px #434dc7,
+    0 0px 10px #434dc7;
 }
 
-
 .dot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dot span {
-    width: 3px;
-    height: 3px;
-    background: #fff;
+  width: 3px;
+  height: 3px;
+  background: #fff;
 }
-
 
 /*********************/
 
@@ -60,7 +59,7 @@ main {
   width: 17px;
   height: 17px;
   border-radius: 50%;
-  background: #F2D648;
+  background: #f2d648;
   position: relative;
   margin-top: 1.5px;
   text-align: center;
@@ -87,7 +86,6 @@ main {
   animation-duration: 0.7s;
   animation-iteration-count: infinite;
 }
-
 
 @keyframes eat {
   0% {
@@ -124,7 +122,7 @@ main {
 @keyframes food {
   0% {
     transform: translateX(0);
-      opacity: 1;
+    opacity: 1;
   }
   100% {
     transform: translateX(-10px);
@@ -132,8 +130,7 @@ main {
   }
 }
 
-
-.ghost {
+/* .ghost {
   width: 69px;
   height: 50px;
   display: flex;
@@ -143,8 +140,45 @@ main {
 img {
   width: 30px;
   height: 30px;
-}
+} */
 
 .wall {
-    background: #1424f7;
+  background: #1424f7;
+}
+
+.ghost {
+  width: 17px;
+  height: 17px;
+  position: relative;
+  border-radius: 50%; 
+  background-color: #ff0000;
+}
+
+.eyes {
+  position: absolute;
+  display: inline-block;
+  height: 30%;
+  width: 30%;
+  border-radius: 50%;
+  bottom: 45%;
+  background-color: white;
+}
+
+.eyeleft {
+  left: 10%;
+}
+
+.eyeright {
+  right: 10%;
+}
+
+.eyes:after {
+  position: absolute;
+  bottom: 35%;
+  content: " ";
+  background-color: black;
+  height: 50%;
+  width: 50%;
+  left: 20%;
+  border-radius: 50%;
 }
