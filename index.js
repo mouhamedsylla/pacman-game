@@ -20,16 +20,3 @@ document.addEventListener("keydown", ({ key }) => {
 
     // GHOSTS.render()
 })
-
-
-
-// function Animate() {
-    
-//     const id = requestAnimationFrame(Animate)
-//     if (PACMAN.collisionDetect()) {
-//         cancelAnimationFrame(id)
-//         Animate()
-//     }
-// }
-
-// Animate()

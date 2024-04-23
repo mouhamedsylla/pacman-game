@@ -4,6 +4,7 @@ class Board {
     this.grid = [];
     this.eat = [];
     this.ghosts = [];
+    this.ghostColors = ['red', 'blue', 'green', 'yellow', 'purple']; // Array of colors for ghosts
   }
 
   build(level) {
@@ -26,6 +27,8 @@ class Board {
                         <div class="eyes eyeleft"></div>
                         <div class="eyes eyeright"></div>
                     `;
+          const colorIndex = this.ghosts.length % this.ghostColors.length; // Get index of color from the ghostColors array
+          div.style.backgroundColor = this.ghostColors[colorIndex]; // Assign color to the ghost
           this.ghosts.push({ x: rowIndex, y: colIndex });
         }
         this.main.appendChild(div);

@@ -1,3 +1,5 @@
+import { DIRECTION } from '../setup.js';
+
 class Ghosts {
   constructor(grid, ghosts) {
     this.grid = grid;
