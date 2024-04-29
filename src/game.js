@@ -48,8 +48,6 @@ class Game {
 
 	play(main) {
 		// build game board and add pacman
-		// main.innerHTML = ""
-		//main.setAttribute("id", "game")
 		this.board.setMain(main)
 		this.board.build(BOARD_MAP)
 		const audio = new Audio()

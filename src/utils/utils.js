@@ -33,13 +33,4 @@ export function delimiteSector(grid, x, y) {
     return result;
   }
   
-  export function DivIn(grid, div) {
-    const start = grid[13][13].getBoundingClientRect().x;
-    const end = grid[13][15].getBoundingClientRect().x;
-    const rect = div.getBoundingClientRect();
-    if (rect.x >= start && rect.x <= end) {
-      return true;
-    }
-    return false;
-  }
   

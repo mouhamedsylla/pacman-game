@@ -62,7 +62,6 @@ h2{
 
 
 #play{
-
 	margin-top: 80px;
 	padding: 15px 25px;
 	color: rgba(10,7,67,1.00);
@@ -101,10 +100,11 @@ h2{
   display:  grid;
   grid: repeat(29, 20px)/repeat(29, 1fr);
   width: 580px;
-  gap: 1px;
   position: relative;
   box-shadow: 0 0 0 2px darkblue, 0 0 0 5px #222, 0 0 0 7px darkblue, 0 0px 10px darkblue;
 }
+
+/* darkblue */
 
 #replay {
   margin-left: 15px;
@@ -193,7 +193,7 @@ justify-content: center;
 }
 
 .wall {
-  background-color: darkblue;
+  background-color: red;
 }
 
 .pacman {
