@@ -5,6 +5,9 @@ const body = document.querySelector("body")
 const audio = new Audio()
 audio.src = "./sound/siren_2.mp3"
 const game_component = `
+                    <header>
+                        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/a/a2/Pac-Man_Logo.svg/langfr-1920px-Pac-Man_Logo.svg.png" alt="Logo Pac-Man" id="logo" />
+                    </header>
                     <div id="game-stat">
                         <div>score: <span id="score">0</span></div>
                         <div id="timer"></div>

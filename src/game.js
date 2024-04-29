@@ -48,6 +48,8 @@ class Game {
 
 	play(main) {
 		// build game board and add pacman
+		// this.style.imgPath.src = "https://upload.wikimedia.org/wikipedia/fr/thumb/a/a2/Pac-Man_Logo.svg/langfr-1920px-Pac-Man_Logo.svg.png"
+		
 		this.board.setMain(main)
 		this.board.build(BOARD_MAP)
 		const audio = new Audio()

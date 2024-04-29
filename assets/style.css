@@ -314,3 +314,19 @@ h2{
   height: 10px;
   }
 }
+
+/* Page Principale */
+
+.principal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* .pac_header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
