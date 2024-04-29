@@ -4,15 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <div class="pacman_box">Pacman</div>
+        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/a/a2/Pac-Man_Logo.svg/langfr-1920px-Pac-Man_Logo.svg.png"alt="Logo Pac-Man" id="logo" />
     </header>
     <main>
-
+        <!-- Home -->
+        <div id="text-infos">
+			<h2>Best Score : 0</h2>
+			<p id="computer">
+				Use <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> to play
+			</p>
+            <p id="mobile">Swipe Up, Down, Left or Right to move Pac-Man</p>
+		</div>
+        <div id="play-btn">
+            <button id="play">Click here to play</button>
+        </div>
+        <!-- GAME -->
+        <!-- <div id="game-stat">
+            <div>score: <span id="score">0</span></div>
+            <div id="timer">time: 00:00</div>
+        </div>
+        <div class="container">
+            <div id="labyrinth"></div>
+            <div id="pause">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="stat-text" id="life">
+            life: 
+            <img class="pac-life" src="./icone.png" alt="">
+            <img class="pac-life" src="./icone.png" alt="">
+            <img class="pac-life" src="./icone.png" alt="">
+        </div> -->
     </main>
-    <script src="../index.js" type="module"></script>
+    <!-- <footer id="footer">PAC-MAN™ & ©2024 ZONE01 DAKAR  Entertainment Inc.</footer> -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>

@@ -1,88 +1,62 @@
+import Actor from './actor.js'
 import { boxColliston } from './utils/utils.js'
 import { DIRECTION } from '../setup.js'
+class Pacman extends Actor {
+    constructor() {
+        super({ x: 1, y: 1 })
+        this.grid = null
+        this.score = 0
+        this.index = 0
+        this.gameOver = false
+    }
 
-class Pacman {
-    constructor(grid) {
+    setActor(grid) {
         this.grid = grid
-        this.position = { x: 1, y: 1 }
-        this.previous = { x: 0, y: 0 }
-        this.pacman = grid[this.position.x][this.position.y]
-        this.direction = null
-        this.prev = null
-        this.prevDirection = null
-    }
-
-    setPrevious() {
-        this.previous.x = this.position.x
-        this.previous.y = this.position.y
-    }
-
-    goBack() {
-        this.position.x = this.previous.x
-        this.position.y = this.previous.y
+        this.actor = this.grid[this.position.x][this.position.y]
     }
 
     mouthRotate() {
-        const pacman_mouth = this.pacman.children[0]
+        const pacman_mouth = this.actor.children[0]
         if (this.direction) { pacman_mouth.style.transform = `rotate(${DIRECTION[this.direction].rotate}deg)` }
     }
 
-    collisionDetect() {
-        var result = false
-        this.grid.forEach(row => {
-            row.forEach(div => {
-                if (div.classList.contains("wall") && boxColliston(div, this.pacman)) {
-                    result = true
-                }
-            })
-        })
-        return result
+    animatePacman() {
+        const pacman_mouth = document.getElementById("mouth")
+        const variations = [[74, 21], [60, 40], [50, 50], [59, 35], [74, 21]]
+        let id
+        
+        const t = setTimeout(() => {
+            if (this.gameOver) {
+                cancelAnimationFrame(id)
+                clearTimeout(t)
+            }
+            pacman_mouth.style.clipPath = `polygon(100% ${variations[this.index][0]}%, 44% 48%, 100% ${variations[this.index][1]}%)`           
+            this.index == 4 ? this.index = 0 : this.index++
+            id = requestAnimationFrame(this.animatePacman.bind(this))
+        }, 100)  
     }
 
     eating(eat) {
+        const audio = new Audio()
+        audio.src = "../assets/sound/credit.wav";
         for (let i = 0; i < eat.length; i++) {
             const span = eat[i][0]
             if (span && span.parentNode) {
-                if (boxColliston(span, this.pacman)) {
+                if (boxColliston(span, this.actor)) {
+                    this.score += 10
+                    const score = document.getElementById("score")
+                    score.innerText = this.score
                     span.classList.add("anime-food")
-                    setTimeout(() => {
-                        span.remove()
-                    }, 200)
+                    span.remove()
+                    audio.play()
                     break
                 }
             }
         }
     }
 
-
-    move(eat) {
-        if (this.collisionDetect()) {
-            this.goBack()
-            this.pacman.style.cssText = this.prev
-            return
-        }
-
-        this.setPrevious()
-        this.prev = this.pacman.style.cssText
-        this.mouthRotate()
-        
-
-        if (this.direction == 'ArrowRight' || this.direction == 'ArrowLeft') {
-            this.position.x += DIRECTION[this.direction].move
-            this.pacman.style.transform = `translate(${this.position.x}px, ${this.position.y }px)`
-        }
-
-        if (this.direction == 'ArrowDown' || this.direction == 'ArrowUp') {
-            this.position.y += DIRECTION[this.direction].move
-            this.pacman.style.transform = `translate(${this.position.x}px, ${this.position.y}px)`
-        }
-        this.prevDirection = this.direction
-        this.eating(eat)
-    }
-    
-
-    static newPlayer(grid) {
-        const player = new this(grid)
+    static newPlayer() {
+        const player = new this()
         return player
     }
 }
