@@ -3,6 +3,7 @@ import { game } from "../index.js";
 const main = document.querySelector("main")
 const body = document.querySelector("body")
 const audio = new Audio()
+let isPaused = false
 audio.src = "./sound/siren_2.mp3"
 const game_component = `
                     <header>
@@ -20,9 +21,9 @@ const game_component = `
                         </div>
                     </div>
                     <div class="stat-text" id="life">
-
                     </div>
 `
+
 // popup message component
 const popupMessage = {
     render: function(options, message) {
@@ -38,6 +39,7 @@ const popupMessage = {
         return div
     }
 }
+
 var pause_id = null;
 var restart
 
@@ -47,28 +49,31 @@ function options() {
     // pause click event handler
     pause_btn.addEventListener("click", () => {
         audio.pause()
+        isPaused = true
+        timer()
         pause_id = game.pause();
         pause_btn.setAttribute("id", "replay");
-        const popup = popupMessage.render(["continu", "restart"], "PAUSE")
+        const popup = popupMessage.render(["continue", "restart"], "PAUSE")
         body.appendChild(popup);
-        const continu = document.getElementById("continu")
+        const continu = document.getElementById("continue")
         restart = document.getElementById("restart")
 
         // continu click event handler
         continu.addEventListener("click", () => {
             audio.play()
             clearInterval(pause_id);
+            isPaused = false
+            timer()
             popup.remove();
             pause_btn.setAttribute("id", "pause");
         });
-
+        
         // restart click event handler
         restart.addEventListener("click", () => {
             window.location.reload(false)
         })
     })
 }
-
 
 // game session
 function gameSession() {
@@ -93,8 +98,7 @@ function gameSession() {
     id = requestAnimationFrame(gameSession)
 }
 
-
-let remainingSeconds = 3 * 60;
+let remainingSeconds = 1 * 5;
 let intervalId
 
 // timer for game session
@@ -105,16 +109,16 @@ function timer() {
 
     const minutesDisplay = String(minutes).padStart(2, '0');
     const secondsDisplay = String(seconds).padStart(2, '0');
-
-    timerElement.textContent = 'time: ' + minutesDisplay + ':' + secondsDisplay;
-    remainingSeconds--;
+    if (!isPaused) {
+        timerElement.textContent = 'time: ' + minutesDisplay + ':' + secondsDisplay;
+        remainingSeconds--;
+        // console.log("Pause timer")
+    }
     if (remainingSeconds < 0) {
         clearInterval(intervalId);
         timerElement.textContent = "GAME OVER";
-        gameOver = true
     }
 }
-
 
 function soundPlay() {
     setTimeout(() => {      
@@ -134,7 +138,6 @@ play.addEventListener("click", () => {
     if (!intervalId) {
         intervalId = setInterval(timer, 1000);
     }
-    
 });
 
 

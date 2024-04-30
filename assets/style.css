@@ -133,7 +133,7 @@ h2{
 }
 
 
-#restart, #continu{
+#restart, #continue{
   width : 150px;
   height: 40px;
   background-color: rgba(10,7,67,1.00);
@@ -324,9 +324,14 @@ h2{
   transform: translate(-50%, -50%);
 }
 
-/* .pac_header {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* css div coin */
+
+/* .coins {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } */
