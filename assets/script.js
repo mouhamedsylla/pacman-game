@@ -20,10 +20,7 @@ const game_component = `
                         </div>
                     </div>
                     <div class="stat-text" id="life">
-                        life: 
-                        <img class="pac-life" src="./icone.png" alt="">
-                        <img class="pac-life" src="./icone.png" alt="">
-                        <img class="pac-life" src="./icone.png" alt="">
+
                     </div>
 `
 // popup message component
