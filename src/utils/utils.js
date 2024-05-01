@@ -32,5 +32,16 @@ export function delimiteSector(grid, x, y) {
     });
     return result;
   }
+
+  export function resetPacman(pacman) {
+    pacman.position = { x: 1, y: 1}
+    pacman.planMoving = { x: 1, y: 1}
+    pacman.actor.style.transform = `translate(${pacman.position.x}px, ${pacman.position.y}px)`
+  }
   
+  export function resetGhost(ghost, position, planMoving) {
+    ghost.position = position
+    ghost.planMoving = planMoving
+    ghost.actor.style.transform = `translate(${ghost.position.x}px, ${ghost.position.y}px)`
+  }
   

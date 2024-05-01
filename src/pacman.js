@@ -8,7 +8,6 @@ class Pacman extends Actor {
     this.score = 0;
     this.index = 0;
     this.gameOver = false;
-    this.lives = 3;
   }
 
   setActor(grid, initialPosition) {
@@ -47,19 +46,10 @@ class Pacman extends Actor {
       }%, 44% 48%, 100% ${variations[this.index][1]}%)`;
       this.index == 4 ? (this.index = 0) : this.index++;
       id = requestAnimationFrame(this.animatePacman.bind(this));
-
-      // Update the lives display
-      this.updateLivesDisplay();
     }, 100);
   }
 
-  updateLivesDisplay() {
-    const livesDisplay = document.getElementById("life");
-    livesDisplay.innerHTML = "life: ";
-    for (let i = 0; i < this.lives; i++) {
-      livesDisplay.innerHTML += `<img class="pac-life" src="./icone.png" alt="">`;
-    }
-  }
+  
 
   eating(eat) {
     const audio = new Audio();
