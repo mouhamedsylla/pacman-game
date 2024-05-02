@@ -1,12 +1,14 @@
 import Actor from "./actor.js";
 import { boxColliston } from "./utils/utils.js";
 class Ghosts extends Actor {
-	constructor(pathImg, position, grid, pos) {
+	constructor(pathImg, position, grid, pos, name) {
 		super(position);
+		this.name = name
 		this.initPosition = null;
 		this.pathImg = pathImg;
 		this.grid = grid;
-		this.planMoving = pos;
+		this.planMoving = pos
+		this.isVulnerable = false
 	}
 
 	createGhost() {
@@ -33,16 +35,18 @@ class Ghosts extends Actor {
 	}
 
 	beVulnerable() {
+		this.isVulnerable = true
 		this.actor.innerHTML = ""
 		this.actor.innerHTML = `<img class="ghost-img" src="./vulnerable-ghost.png">`
 		setTimeout(() => {
 			this.actor.innerHTML = ""
 			this.actor.innerHTML = `<img class="ghost-img" src="${this.pathImg}">`
-		}, 5000)
+			this.isVulnerable = false
+		}, 15000)
 	}
 
-	static newGhost(pathImg, initPosition, position, grid, pos) {
-		const g = new this(pathImg, position, grid, pos);
+	static newGhost(pathImg, initPosition, position, grid, pos, name) {
+		const g = new this(pathImg, position, grid, pos, name);
 		g.createGhost();
 		g.initPosition = initPosition;
 		return g;

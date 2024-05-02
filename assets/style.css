@@ -200,17 +200,17 @@ justify-content: center;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
   background: #F2D648;
   border-radius: 50%;
-  /* margin-top: 1.5px; */
+  margin-top: 1.5px;
   position: relative;
 }
 
 .pacman__mouth {
-  width: 19px;
-  height: 19px;
+  width: 17px;
+  height: 17px;
   background: #222;
   border-radius: 50%;
   clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
@@ -338,3 +338,4 @@ h2{
   border-radius: 50%;
   background-color: rgba(247,191,80,1.00);
 }
+

@@ -31,22 +31,28 @@ class Game {
 				this.audio.background.pause()
 				this.audio.event.src = AUDIO.death
 				this.audio.event.play()
-				// Reset Pac-Man and Ghosts position
-				let i = 0
-				resetPacman(this.pacman)
-				Object.entries(GHOSTS).forEach(([key, value]) => {
-					const newVal = JSON.parse(JSON.stringify(value))
-					resetGhost(this.ghosts[i], newVal.position, newVal.plan)
-					i++
-				})
-				this.lives -= 1
-				this.lives == 0 ? this.gameOver = true : this.updateLivesDisplay()
-				if (!this.gameOver) {
-					this.pauseGame()
-					setTimeout(() => {
-						this.resumeGame()
-						this.audio.background.play()
-					}, 2000)
+				if (ghost.isVulnerable) {
+					const newVal = JSON.parse(JSON.stringify(GHOSTS[ghost.name]))
+					ghost.actor.innerHTML = `<img class="ghost-img" src="${ghost.pathImg}">`
+					resetGhost(ghost, newVal.position, newVal.plan)
+				} else {
+					// Reset Pac-Man and Ghosts position
+					let i = 0
+					resetPacman(this.pacman)
+					Object.entries(GHOSTS).forEach(([key, value]) => {
+						const newVal = JSON.parse(JSON.stringify(value))
+						resetGhost(this.ghosts[i], newVal.position, newVal.plan)
+						i++
+					})
+					this.lives -= 1
+					this.lives == 0 ? this.gameOver = true : this.updateLivesDisplay()
+					if (!this.gameOver) {
+						this.pauseGame()
+						setTimeout(() => {
+							this.resumeGame()
+							this.audio.background.play()
+						}, 2000)
+					}
 				}
 			}
 			
@@ -58,7 +64,7 @@ class Game {
 				ghost.direction = ghost.randomDirection()
 			}
 
-			if (this.vulnerable) { ghost.beVulnerable()}
+			if (this.vulnerable) { ghost.beVulnerable() }
 			if (!collisionDetected || (collisionDetected && ghost.direction !== null)) {
 				id = requestAnimationFrame(animate)
 			}
@@ -89,7 +95,8 @@ class Game {
 					initVal.initPosition,
 					initVal.position,
 					this.board.grid,
-					initVal.plan
+					initVal.plan,
+					key
 				)
 				this.ghosts.push(newGhost)
 				this.board.addGhost(newGhost)
