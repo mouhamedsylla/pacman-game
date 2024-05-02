@@ -2,12 +2,12 @@ import { game } from "../index.js";
 
 const main = document.querySelector("main")
 const body = document.querySelector("body")
-const audio = new Audio()
-let isPaused = false
-audio.src = "./sound/siren_2.mp3"
+
+// game party component
 const game_component = `
                     <header>
-                        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/a/a2/Pac-Man_Logo.svg/langfr-1920px-Pac-Man_Logo.svg.png" alt="Logo Pac-Man" id="logo" />
+                        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/a/a2/Pac-Man_Logo.svg/langfr-1920px-Pac-Man_Logo.svg.png" 
+                        alt="Logo Pac-Man" id="logo" />
                     </header>
                     <div id="game-stat">
                         <div>score: <span id="score">0</span></div>
@@ -44,104 +44,74 @@ const popupMessage = {
     }
 }
 
-var pause_id = null;
+var gameOver
+var gameSessionId
 var restart
 
-function options() {
+function gameHandler() {
     const pause_btn = document.getElementById("pause")
 
     // pause click event handler
     pause_btn.addEventListener("click", () => {
-        audio.pause()
-        isPaused = true
-        timer()
-        pause_id = game.pause();
-        pause_btn.setAttribute("id", "replay");
+        game.audio.background.pause()
+        game.pauseGame()
+        pause_btn.setAttribute("id", "replay")
         const popup = popupMessage.render(["continue", "restart"], "PAUSE")
-        body.appendChild(popup);
+        body.appendChild(popup)
         const continu = document.getElementById("continue")
         restart = document.getElementById("restart")
 
         // continu click event handler
         continu.addEventListener("click", () => {
-            audio.play()
-            clearInterval(pause_id);
-            isPaused = false
-            timer()
+            game.audio.background.play()
+            game.resumeGame()
             popup.remove();
             pause_btn.setAttribute("id", "pause");
-        });
-        
+        })
+
         // restart click event handler
         restart.addEventListener("click", () => {
             window.location.reload(false)
         })
-    })
+    }) 
 }
 
-// game session
 function gameSession() {
-    const gameOver = game.gameOver
-    let id
+    gameOver = game.gameOver
     if (gameOver) {
-        cancelAnimationFrame(id)
+        cancelAnimationFrame(gameSessionId)
+        game.pauseGame()
         const popup = popupMessage.render(["restart"], "GAME OVER")
         body.appendChild(popup)
-        game.pause()
-        clearInterval(intervalId)
         restart = document.getElementById("restart")
         restart.addEventListener("click", () => {
             window.location.reload(false)
         })
-        audio.pause()
-        audio.src = "./sound/death_1.wav"
-        audio.loop = false
-        audio.play()
+        game.audio.background.pause()
+        game.audio.event.play()
         gameOver = false
-    }
-    id = requestAnimationFrame(gameSession)
-}
-
-let remainingSeconds = 1 * 5;
-let intervalId
-
-// timer for game session
-function timer() {
-    const timerElement = document.getElementById('timer');
-    const minutes = Math.floor(remainingSeconds / 60);
-    const seconds = remainingSeconds % 60;
-
-    const minutesDisplay = String(minutes).padStart(2, '0');
-    const secondsDisplay = String(seconds).padStart(2, '0');
-    if (!isPaused) {
-        timerElement.textContent = 'time: ' + minutesDisplay + ':' + secondsDisplay;
-        remainingSeconds--;
-        // console.log("Pause timer")
-    }
-    if (remainingSeconds < 0) {
-        clearInterval(intervalId);
-        timerElement.textContent = "GAME OVER";
+    } else {
+        gameSessionId = requestAnimationFrame(gameSession)
     }
 }
+
 
 function soundPlay() {
     setTimeout(() => {      
-        audio.loop = true
-        audio.load()
-        audio.play()
+        game.audio.background.loop = true
+        game.audio.background.load()
+        game.audio.background.play()
     }, 4000)
 }
 
 play.addEventListener("click", () => {
     main.innerHTML = game_component
     const labyrinth = document.getElementById("labyrinth")
+    game.timerElement = document.getElementById('timer')
     game.play(labyrinth)
-    options()
+    gameHandler()
     gameSession()
     soundPlay()
-    if (!intervalId) {
-        intervalId = setInterval(timer, 1000);
-    }
 });
 
 

@@ -12,7 +12,7 @@ html {
 
 body {
   background-color: rgba(10,7,67,1.00);
-font-family: 'Bungee', cursive;
+  font-family: 'Bungee', cursive;
 }
 
 header {
@@ -193,24 +193,24 @@ justify-content: center;
 }
 
 .wall {
-  background-color: red;
+  background-color: darkblue;
 }
 
 .pacman {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 17px;
-  height: 17px;
+  width: 19px;
+  height: 19px;
   background: #F2D648;
   border-radius: 50%;
-  margin-top: 1.5px;
+  /* margin-top: 1.5px; */
   position: relative;
 }
 
 .pacman__mouth {
-  width: 17px;
-  height: 17px;
+  width: 19px;
+  height: 19px;
   background: #222;
   border-radius: 50%;
   clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
@@ -326,12 +326,15 @@ h2{
 
 /* css div coin */
 
-/* .coins {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: yellow;
+.coin {
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+}
+
+.coin > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(247,191,80,1.00);
+}

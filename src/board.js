@@ -23,15 +23,12 @@ class Board {
                     <div class="pacman__mouth" id="mouth"></div>
                 `
             }
-            // if (num == 3) {
-            //     div.classList = []
-            //     div.classList.add("coin")
-            //     div.innerHTML = `
-            //         <div class="coins" id="id_coin"></div>
-            //     `
-            // }
+            if (num == 3) {
+                div.classList = []
+                div.classList.add("coin")
+            }
             R.push(div)
-            if (div.classList.contains("dot")) {
+            if (div.classList.contains("dot") || div.classList.contains("coin")) {
                 div.innerHTML = `<span class="pacman__food"></span>`
                 this.eat.push(div.children)
             }
