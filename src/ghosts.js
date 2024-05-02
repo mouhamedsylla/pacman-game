@@ -32,6 +32,15 @@ class Ghosts extends Actor {
 		return false;
 	}
 
+	beVulnerable() {
+		this.actor.innerHTML = ""
+		this.actor.innerHTML = `<img class="ghost-img" src="./vulnerable-ghost.png">`
+		setTimeout(() => {
+			this.actor.innerHTML = ""
+			this.actor.innerHTML = `<img class="ghost-img" src="${this.pathImg}">`
+		}, 5000)
+	}
+
 	static newGhost(pathImg, initPosition, position, grid, pos) {
 		const g = new this(pathImg, position, grid, pos);
 		g.createGhost();

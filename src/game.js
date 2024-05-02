@@ -12,6 +12,7 @@ class Game {
 		this.pauseId = null
 		this.gameOver = false
 		this.timerElement = null
+		this.vulnerable = false
 		this.audio = { background: new Audio(), event: new Audio()}
 		this.timer = JSON.parse(JSON.stringify(TIMER))
 	}
@@ -48,6 +49,7 @@ class Game {
 					}, 2000)
 				}
 			}
+			
 			const divs = delimiteSector(ghost.grid, Math.trunc(ghost.planMoving.x),Math.trunc(ghost.planMoving.y))
 			const collisionDetected = collisionDetect(divs, ghost.actor)
 
@@ -56,6 +58,7 @@ class Game {
 				ghost.direction = ghost.randomDirection()
 			}
 
+			if (this.vulnerable) { ghost.beVulnerable()}
 			if (!collisionDetected || (collisionDetected && ghost.direction !== null)) {
 				id = requestAnimationFrame(animate)
 			}
@@ -76,7 +79,7 @@ class Game {
 				this.pacman.direction = key
 				this.pacman.mouthRotate()
 				this.pacman.move()
-				this.pacman.eating(this.board.eat)
+				this.vulnerable = this.pacman.pacmanEating(this.board.eat)
 			})
 
 			Object.entries(GHOSTS).forEach(([key, value]) => {

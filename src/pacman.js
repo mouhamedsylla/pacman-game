@@ -48,8 +48,9 @@ class Pacman extends Actor {
 
 
 
-	eating(eat) {
+	pacmanEating(eat) {
 		const audio = new Audio();
+		let vulnerable = false
 		audio.src = AUDIO.chomp
 		for (let i = 0; i < eat.length; i++) {
 			const span = eat[i][0];
@@ -57,6 +58,7 @@ class Pacman extends Actor {
 				if (boxColliston(span, this.actor)) {
 					if (span.parentNode.classList.contains("coin")) {
 						this.score += 1000
+						vulnerable = true
 						//audio.src =
 					} else {
 						this.score += 10
@@ -66,10 +68,11 @@ class Pacman extends Actor {
 					span.classList.add("anime-food");
 					span.remove();
 					audio.play();
-					break;
+					break
 				}
 			}
 		}
+		return vulnerable
 	}
 
 	static newPlayer() {
