@@ -136,8 +136,8 @@ class Game {
 		clearInterval(this.pauseId)
 		this.timer.intervalId = setInterval(() => {
             if (!this.timer.isPaused) {
-				this.displayTime()
                 this.timer.remainingSeconds--;
+				this.displayTime()
 
                 if (this.timer.remainingSeconds <= 0) {
                     this.gameOver = true
