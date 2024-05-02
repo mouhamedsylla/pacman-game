@@ -59,7 +59,7 @@ export const GHOSTS = {
 /* ---- TIME ---- */
 
 export const TIMER = {
-    remainingSeconds: 2 * 60,
+    remainingSeconds: 5 * 60,
     intervalId: null,
     isPaused: false,
     lastPauseTime: null,

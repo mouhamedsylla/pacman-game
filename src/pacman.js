@@ -48,31 +48,37 @@ class Pacman extends Actor {
 
 
 
-	pacmanEating(eat) {
-		const audio = new Audio();
-		let vulnerable = false
-		audio.src = AUDIO.chomp
-		for (let i = 0; i < eat.length; i++) {
-			const span = eat[i][0];
-			if (span && span.parentNode) {
-				if (boxColliston(span, this.actor)) {
-					if (span.parentNode.classList.contains("coin")) {
-						this.score += 1000
-						vulnerable = true
-						//audio.src =
-					} else {
-						this.score += 10
-					}
-					const score = document.getElementById("score");
-					score.innerText = this.score;
-					span.classList.add("anime-food");
-					span.remove();
-					audio.play();
-					break
-				}
-			}
-		}
-		return vulnerable
+
+    pacmanEating() {
+        const audio = new Audio();
+        let vulnerable = false;
+        audio.src = AUDIO.chomp;
+
+        const foodElements = document.querySelectorAll('.pacman__food');
+
+        for (let i = 0; i < foodElements.length; i++) {
+            const foodElement = foodElements[i];
+            if (boxColliston(foodElement, this.actor)) {
+                if (foodElement.parentNode.classList.contains("coin")) {
+                    this.score += 1000;
+                    vulnerable = true;
+                } else {
+                    this.score += 10;
+                }
+                const score = document.getElementById("score");
+                score.innerText = this.score;
+                foodElement.classList.add("anime-food");
+                foodElement.remove();
+                audio.play();
+                break;
+            }
+        }
+
+        return vulnerable;
+    }
+
+	hasWon() {
+		return this.board.eat.length === 0;
 	}
 
 	static newPlayer() {
