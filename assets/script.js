@@ -77,10 +77,10 @@ function gameHandler() {
 }
 
 function gameSession() {
-  if (game.gameOver) {
+  if (game.gameOver || game.won) {
     cancelAnimationFrame(gameSessionId);
     game.pauseGame();
-    const popup = popupMessage.render(["restart"], "GAME OVER");
+    const popup = game.won != true ? popupMessage.render(["restart"], "GAME OVER") : popupMessage.render(["restart"], "YOU WIN")
     body.appendChild(popup);
     restart = document.getElementById("restart");
     restart.addEventListener("click", () => {
@@ -103,11 +103,11 @@ function soundPlay() {
 }
 
 play.addEventListener("click", () => {
-  main.innerHTML = game_component;
-  const labyrinth = document.getElementById("labyrinth");
-  game.timerElement = document.getElementById("timer");
-  game.play(labyrinth);
-  gameHandler();
-  gameSession();
-  soundPlay();
+    main.innerHTML = game_component
+    const labyrinth = document.getElementById("labyrinth")
+    game.timerElement = document.getElementById('timer')
+    game.play(labyrinth)
+    gameHandler()
+    gameSession()
+    soundPlay()
 });

@@ -9,7 +9,7 @@ export function delimiteSector(grid, x, y) {
 	]
 }
 
-export function boxColliston(div1, div2) {
+export function boxCollision(div1, div2) {
 	const object1 = div1.getBoundingClientRect();
 	const object2 = div2.getBoundingClientRect();
 	if (
@@ -26,7 +26,7 @@ export function boxColliston(div1, div2) {
 export function collisionDetect(grid, actor) {
 	var result = false;
 	grid.forEach(div => {
-		if (div.classList.contains("wall") && boxColliston(div, actor)) {
+		if (div.classList.contains("wall") && boxCollision(div, actor)) {
 			result = true;
 		}
 	});

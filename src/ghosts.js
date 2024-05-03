@@ -1,5 +1,5 @@
 import Actor from "./actor.js";
-import { boxColliston } from "./utils/utils.js";
+import { boxCollision } from "./utils/utils.js";
 class Ghosts extends Actor {
 	constructor(pathImg, position, grid, pos, name) {
 		super(position);
@@ -28,7 +28,7 @@ class Ghosts extends Actor {
 
 
 	crossPacman(pacman) {
-		if (boxColliston(this.actor, pacman)) {
+		if (boxCollision(this.actor, pacman)) {
 			return true;
 		}
 		return false;
