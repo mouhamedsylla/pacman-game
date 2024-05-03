@@ -34,32 +34,32 @@ export const GHOSTS = {
         plan: { x: 14, y: 12 }
     },
 
-    // pinky: {
-    //     initPosition: 392,
-    //     imgPath: './ghost5.png',
-    //     position: { x: 0, y: 0 },
-    //     plan: { x: 15, y: 13 }
-    // },
+    pinky: {
+        initPosition: 392,
+        imgPath: './ghost5.png',
+        position: { x: 0, y: 0 },
+        plan: { x: 15, y: 13 }
+    },
 
-    // clidy: {
-    //     initPosition: 391,
-    //     imgPath: './ghost3.png',
-    //     position: { x: 0, y: 0 },
-    //     plan: { x: 14, y: 13 }
-    // },
+    clidy: {
+        initPosition: 391,
+        imgPath: './ghost3.png',
+        position: { x: 0, y: 0 },
+        plan: { x: 14, y: 13 }
+    },
 
-    // inky: {
-    //     initPosition: 390,
-    //     imgPath: './ghost1.png',
-    //     position: { x: 0, y: 0 },
-    //     plan: { x: 13, y: 13 }
-    // }
+    inky: {
+        initPosition: 390,
+        imgPath: './ghost1.png',
+        position: { x: 0, y: 0 },
+        plan: { x: 13, y: 13 }
+    }
 }
 
 /* ---- TIME ---- */
 
 export const TIMER = {
-    remainingSeconds: 8 * 60,
+    remainingSeconds: 5 * 60,
     intervalId: null,
     isPaused: false,
     lastPauseTime: null,
