@@ -8,7 +8,7 @@ class Board {
     setMain(main) {
         this.main = main
     }
-
+    
     build(level) {
         let cpt = 0;
         level.forEach(row => {

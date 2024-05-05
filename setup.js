@@ -1,4 +1,5 @@
 /* ---- DIRECTION ---- */
+
 export const DIRECTION = {
     ArrowRight: {
         rotate: 0,
@@ -26,6 +27,7 @@ export const DIRECTION = {
 }
 
 /* ---- GHOSTS ---- */
+
 export const GHOSTS = {
     blinky: {
         initPosition: 362,

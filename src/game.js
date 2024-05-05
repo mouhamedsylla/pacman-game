@@ -33,6 +33,7 @@ class Game {
 				this.audio.event.src = AUDIO.death
 				this.audio.event.play()
 				if (ghost.isVulnerable) {
+					clearTimeout(ghost.idVulnerable)
 					const newVal = JSON.parse(JSON.stringify(GHOSTS[ghost.name]))
 					ghost.actor.innerHTML = `<img class="ghost-img" src="${ghost.pathImg}">`
 					resetGhost(ghost, newVal.position, newVal.plan)
@@ -45,8 +46,9 @@ class Game {
 						resetGhost(this.ghosts[i], newVal.position, newVal.plan)
 						i++
 					})
-					this.lives -= 1
-					this.lives == 0 ? this.gameOver = true : this.updateLivesDisplay()
+					
+					this.lives -= 1		
+					this.lives < 0 ? this.gameOver = true : this.updateLivesDisplay()
 					if (!this.gameOver) {
 						this.pauseGame()
 						setTimeout(() => {
@@ -83,7 +85,7 @@ class Game {
 			this.pacman.setActor(this.board.grid)
 			this.pacman.animatePacman()
 			document.addEventListener("keydown", ({ key }) => {
-				this.pacman.direction = key
+				this.pacman.direction = this.timer.isPaused == true ? "" : key
 				this.pacman.mouthRotate()
 				this.pacman.move()
 				if (this.pacman.hasWon(this.board.eat)) { this.won = true }

@@ -9,6 +9,7 @@ class Ghosts extends Actor {
 		this.grid = grid;
 		this.planMoving = pos
 		this.isVulnerable = false
+		this.idVulnerable = null
 	}
 
 	createGhost() {
@@ -38,7 +39,7 @@ class Ghosts extends Actor {
 		this.isVulnerable = true
 		this.actor.innerHTML = ""
 		this.actor.innerHTML = `<img class="ghost-img" src="./vulnerable-ghost.png">`
-		setTimeout(() => {
+		this.idVulnerable = setTimeout(() => {
 			this.actor.innerHTML = ""
 			this.actor.innerHTML = `<img class="ghost-img" src="${this.pathImg}">`
 			this.isVulnerable = false

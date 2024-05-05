@@ -43,4 +43,5 @@ export function resetGhost(ghost, position, planMoving) {
 	ghost.position = position
 	ghost.planMoving = planMoving
 	ghost.actor.style.transform = `translate(${ghost.position.x}px, ${ghost.position.y}px)`
+	ghost.actor.innerHTML = `<img class="ghost-img" src="${ghost.pathImg}">`
 }
