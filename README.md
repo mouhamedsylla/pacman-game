@@ -10,6 +10,8 @@ Welcome to the classic Pac-Man game developed using JavaScript! This project is 
 
 ## Description
 
+"Pacman" is a classic arcade game originally released in 1980 by Namco. It's one of the most iconic and influential video games of all time. In the game, players control a character named Pac-Man who must navigate through a maze, eating dots or pellets while avoiding colorful ghosts named Blinky, Pinky, Inky, and Clyde. The objective is to clear the maze of all the pellets while avoiding being caught by the ghosts.
+
 This Pac-Man game is a web-based application built entirely with JavaScript, HTML, and CSS, without relying on any external libraries or frameworks. It recreates the iconic gameplay experience where players control the famous yellow character, Pac-Man, navigating through a maze while avoiding ghosts and consuming pellets.
 
 The game features a responsive design, ensuring an enjoyable experience across various devices and screen sizes. Players can control Pac-Man using the arrow keys on their keyboards or by swiping on touch-enabled devices.
