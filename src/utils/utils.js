@@ -9,9 +9,11 @@ export function delimiteSector(grid, x, y) {
 	]
 }
 
-export function boxCollision(div1, div2) {
+export function boxCollision(div1, div2, margin = 0) {
 	const object1 = div1.getBoundingClientRect();
 	const object2 = div2.getBoundingClientRect();
+	object2.x += margin
+	object2.y += margin
 	if (
 		object1.x + object1.width > object2.x &&
 		object1.x < object2.x + object2.width &&

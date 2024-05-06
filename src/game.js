@@ -29,7 +29,6 @@ class Game {
 			let id
 			ghost.move()
 			if (ghost.crossPacman(this.pacman.actor)) {
-				this.audio.background.pause()
 				this.audio.event.src = AUDIO.death
 				this.audio.event.play()
 				if (ghost.isVulnerable) {
@@ -40,6 +39,7 @@ class Game {
 				} else {
 					// Reset Pac-Man and Ghosts position
 					let i = 0
+					this.audio.background.pause()
 					resetPacman(this.pacman)
 					Object.entries(GHOSTS).forEach(([key, value]) => {
 						const newVal = JSON.parse(JSON.stringify(value))
