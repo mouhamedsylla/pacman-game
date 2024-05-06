@@ -57,10 +57,9 @@ class Pacman extends Actor {
 				if (span && span.parentNode) {
 					if (boxCollision(span, this.actor)) {
 						if (span.parentNode.classList.contains("coin")) {
-							this.score += 1000;
 							vulnerable = true;
 						} else {
-							this.score += 10;
+							this.score += 10
 						}
 						const score = document.getElementById("score");
 						score.innerText = this.score;
@@ -79,7 +78,7 @@ class Pacman extends Actor {
 	hasWon(eat) {
 		for (let i = 0; i < eat.length; i++) {
 			const htmlCollection = eat[i];
-			if (htmlCollection.length > 0) {
+			if (htmlCollection.length > 0 && !htmlCollection[0].classList.contains("ghost-img")) {
 				return false;
 			}
 		}

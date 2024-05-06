@@ -106,7 +106,7 @@ function soundPlay() {
 function initGame() {
 	main.innerHTML = game_component
 	const labyrinth = document.getElementById("labyrinth")
-	pause_btn = document.getElementById("pause");
+	pause_btn = document.getElementById("pause")
 	game.timerElement = document.getElementById('timer')
 	pause_btn.addEventListener("click", handlePauseRestart)
 	game.play(labyrinth)
